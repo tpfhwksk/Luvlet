@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width", initial-scale = "1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>JSP 게시판 웹 사이트</title>
+<title>Luvlet</title>
 </head>
 <body>
 	<%
@@ -17,6 +17,12 @@
 			userID = (String)session.getAttribute("userID");		
 		}
 	%>
+	<style>
+	.right_align {
+	 float: right;
+	 width: 3%;
+	}
+	</style>
 	<script>
 	var itemArray = ['머리가 아프다', '신경이 예민하고 마음의 안정이 안 된다', '쓸데없는 생각이 머리에서 떠나지 않는다', '어지럽거나 현기증이 난다', 
 	                '성욕이 감퇴되었다', '다른 사람들이 못마땅하게 보인다', '누가 내 생각을 조정하는 것 같다', '다른 사람들이 나를 비난하는 것 같다', '기억력이 좋지 않다', '조심성이 없어서 걱정이다'
@@ -26,11 +32,11 @@
 	                ,'죽음에 대한 생각을 한다', '과식한다', '남들이 나를 쳐다보거나 나에 대해 이야기하면 거북해진다', '내가 생각하는 것이 내 생각 같지 않다', '누구를 때리거나 해치고 싶은 충동이 생긴다', '새벽에 일찍 잠이 깬다', '만지고 셈하고 씻는 것과 같은 행동을 반복하게 된다', '잠을 설친다', '무엇을 때려 부수고 싶은 충동이 생긴다', '다른 사람들에게는 없는 생각이나 신념을 갖고 있다', '다른 사람과 함께 있을 때는 나의 언행에 신경을 쓰게 된다', '시장이나 극장처럼 사람이 많이 모인 곳에 가면 거북하다', '매사에 힘들다', '공포에 휩싸이는 때가 있다', '여러 사람이 있는 곳에서 먹고 마시기가 거북하다', '잘 다툰다', '혼자 있으면 마음이 안 놓이거나 두렵다','다른 사람들이 내 공로를 인정하지 않는다'
 	                ,'사람들과 함께 있을 때에도 고독을 느낀다', '안절부절못해서 가만히 앉아 있을 수가 없다', '허무한 느낌이 든다', '낯익은 것들도 생소하거나 비현실적인 것처럼 느낀다', '고함을 지르거나 물건을 내 던진다', '사람들 앞에서 쓰러질까봐 걱정한다', '그냥 놓아두면 사람들에게 내가 이용당할 것 같다', '성 문제로 고민한다', '내 죄 때문에 벌을 받아야 한다', '무슨 일이든 조급해서 안절부절 못한다', '내 몸 어딘가가 멍들었다고 생각한다', '늘 남과 동떨어져 있는 느낌이다', '죄를 지었거나 잘못을 저질렀다고 생각한다', '내 마음 어딘가 이상하다고 생각한다'];
 	function make_button(num){
-		document.write(' <input type="radio" name="item', num, '" value="0">');
-		document.write(' <input type="radio" name="item', num, '" value="1">');
-		document.write(' <input type="radio" name="item', num, '" value="2">');
-		document.write(' <input type="radio" name="item', num, '" value="3">');
-		document.write(' <input type="radio" name="item', num, '" value="4">');
+		document.write(' <input type="radio" class="right_align" name="item', num, '" value="0">  ');
+		document.write(' <input type="radio" class="right_align" name="item', num, '" value="1">  ');
+		document.write(' <input type="radio" class="right_align" name="item', num, '" value="2">  ');
+		document.write(' <input type="radio" class="right_align" name="item', num, '" value="3">  ');
+		document.write(' <input type="radio" class="right_align" name="item', num, '" value="4">  ');
 	}
 	function calc_result(cnt){
 
@@ -109,6 +115,7 @@
 			<h1><center>SCL-90-R</center></h1>
 			<p>◉ 지난 7일 동안(오늘을 포함해서) 아래 문제 때문에 얼마나 괴로워했는지를 가장 잘 나타낸 것 하나를 골라서 ( V )표해주십시오. 
 			전혀(0점), 약간 (1점), 웬만큼 (2점), 꽤 (3점), 아주 (4점)</p>
+			
 			<form name="surveyresult" action="resultAction.jsp">
 				<!--  <p>1. 머리가 아프다<script>make_button(1)</script></p>
 				<p>2. 신경이 예민하고 마음의 안정이 안 된다 <script>make_button(2)</script></p>	-->
@@ -117,8 +124,7 @@
 						document.write("<p>",i+1,". ",itemArray[i]," <script>make_button(",i,")<","/script></p>");
 					}
 				</script>	
-				<input type="submit" class="btn btn-primary pull-right" value="결과보기">
-				<input type="button" value="확인" onclick="calc_result(100);">
+				<input type="button" class="btn btn-primary pull-right" value="결과보기" onclick="calc_result(100);">
 			</form>			
 		</div>
 	</div>

@@ -58,10 +58,12 @@
 				'성 문제로 고민한다', '내 죄 때문에 벌을 받아야 한다', '무슨 일이든 조급해서 안절부절 못한다',
 				'내 몸 어딘가가 멍들었다고 생각한다', '늘 남과 동떨어져 있는 느낌이다',
 				'죄를 지었거나 잘못을 저질렀다고 생각한다', '내 마음 어딘가 이상하다고 생각한다' ];
+		var autoIdx = 0; // for easy click
 		function make_button(num) {
 
 			document
 					.write(' <input type="radio" class="right_align" name="item', num, '" value="0" style="margin-right:7px;"  >  ');
+			
 			document
 					.write(' <input type="radio" class="right_align" name="item', num, '" value="1" style="margin-right:7px;" >  ');
 			document
@@ -70,6 +72,8 @@
 					.write(' <input type="radio" class="right_align" name="item', num, '" value="3" style="margin-right:7px;" >  ');
 			document
 					.write(' <input type="radio" class="right_align" name="item', num, '" value="4" style="margin-right:7px;">  ');
+			
+			autoIdx += 5;
 		}
 		function calc_result(cnt) {
 

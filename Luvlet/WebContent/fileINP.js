@@ -103,7 +103,7 @@ function surveyStart() {
 	  button.onclick = function() {
 		  var surveyHTML = "<form name=\"surveyresult\">";
 		  surveyHTML += "	  <table border=\"1\" width=\"100%\" style=\"margin-right: 10%\">";
-		  
+		  var autoIdx = 0;
 		  for(var i = 0; i < questions.length; i++){
 			  //alert(questions[i]);
 			  surveyHTML += "<tr><td width=\"70%\"><p>" + questions[i] + "</p></td>";
@@ -111,13 +111,19 @@ function surveyStart() {
 				  surveyHTML += '<input type="radio" class="right_align" name="item', i , '" value=', j , ' style="margin-right:7px;>';
 			  }*/
 			  surveyHTML += "<td width=\"30%\" align=\"center\"><p>";
-			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="0" style="margin-right:7px;">';
-			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="1" style="margin-right:7px;">';
-			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="2" style="margin-right:7px;">';
-			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="3" style="margin-right:7px;">';
-			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="4" style="margin-right:7px;">';
-
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" id="' + (autoIdx + 0) + '" value="0" style="margin-right:7px;">';
+			  surveyHTML += '<label for="' + (autoIdx + 0) + '">0</label>';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" id="' + (autoIdx + 1) +'" value="1" style="margin-right:7px;">';
+			  surveyHTML += '<label for="' + (autoIdx + 1) + '">1</label>';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" id="' + (autoIdx + 2) +'" value="2" style="margin-right:7px;">';
+			  surveyHTML += '<label for="' + (autoIdx + 2) +'">2</label>';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" id="' + (autoIdx + 3) +'" value="3" style="margin-right:7px;">';
+			  surveyHTML += '<label for="' + (autoIdx + 3) +'">3</label>';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" id="' + (autoIdx + 4) +'" value="4" style="margin-right:7px;">';
+			  surveyHTML += '<label for="' + (autoIdx + 4) +'">4</label>';
+			  
 			  surveyHTML += "</p></td></tr>";
+			  autoIdx += 5;
 		  }
 		  
 		  surveyHTML += "	</table>";

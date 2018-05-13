@@ -152,7 +152,7 @@
 					<!--  <p>1. 머리가 아프다<script>make_button(1)</script></p>
 				<p>2. 신경이 예민하고 마음의 안정이 안 된다 <script>make_button(2)</script></p>	-->
 					<script>
-						for (var i = 0; i < itemArray.length; i++) {
+						for (var i = 0; i < 10; i++) {
 							document
 									.write(
 											"<tr><td width=\"70%\"><p>",
@@ -162,10 +162,12 @@
 											"</p></td><td width=\"30%\" align=\"center\"><p> <script>make_button(",
 											i, ")<","/script></p></td></tr>");
 						}
+					
 					</script>
+					
 				</table>
 				<input type="button" class="btn btn-primary pull-right" value="결과보기"
-					onclick="calc_result(100);">
+					onclick="calc_result(10);">
 			</form>
 		</div>
 	</div>

@@ -81,7 +81,19 @@ function calc_result(cnt) {
 		}
 
 	}
-	document.write("총합 :" + sum);
+	return sum;
+	//document.write("총합 :" + sum);
+}
+
+function resultBtnClick() {
+	  var button = document.getElementById("resultBtn");
+	  
+	  button.onclick = function() {
+		  var gameOverHtml = "<h1>Result</h1>";
+		  var sum = calc_result(questions.length);
+		  gameOverHtml += "<h2 id='score'> Your scores: " + sum + "</h2>";
+		  document.getElementById("survey").innerHTML = gameOverHtml;
+	  }
 }
 
 // 숫자 0클릭해도 라디오 버튼 클릭 되게
@@ -110,11 +122,15 @@ function surveyStart() {
 		  
 		  surveyHTML += "	</table>";
 		  
-		  surveyHTML += '	<input type="button" class="btn btn-primary pull-right" value="결과보기" onclick="calc_result(' + questions.length + ');">';
+		  //surveyHTML += '	<input type="button" class="btn btn-primary pull-right" value="결과보기" onclick="calc_result(' + questions.length + ');">';
+		  surveyHTML += '	<button class="btn btn-primary pull-right" id="resultBtn"><span>결과보기</span></button>';
+
+		  
 		  surveyHTML += "</form>";
 		  
-		  
 		  document.getElementById("survey").innerHTML = surveyHTML;
+		  
+		  resultBtnClick();
 		  
 	  }
 }

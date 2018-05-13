@@ -55,38 +55,67 @@ file.onchange = function() {
 		descHTML += "</div>";
 		document.getElementById("survey").innerHTML = descHTML;
 		
-		//surveyStart();
+		surveyStart();
 		
 	};
 };
 
+function calc_result(cnt) {
 
+	var sum = 0;
+	var item = "item";
+	for (var i = 0; i < cnt; i++) {
+
+		var chk_radio = document.getElementsByName(item + String(i));
+		var result = null;
+		for (var j = 0; j < chk_radio.length; j++) {
+
+			if (chk_radio[j].checked == true) {
+				result = chk_radio[j].value;
+				sum = sum + Number(result);
+			}
+		}
+		if (result == null) {
+			alert("선택하지 않은 설문이 있습니다");
+			return;
+		}
+
+	}
+	document.write("총합 :" + sum);
+}
+
+// 숫자 0클릭해도 라디오 버튼 클릭 되게
 function surveyStart() {
 	var button = document.getElementById("startBtn");
 	  
 	  button.onclick = function() {
-		  var surveyHTML = "<h1>LUVLET</h1>";
-		  surveyHTML += "<hr style=\"margin-bottom:20px\">";
-		  surveyHTML += "<p id=\"question\"></p>";
-		        
-		  surveyHTML += "<div class=\"buttons\" align=\"center\">";
-		  surveyHTML += "	<button id=\"btn0\"><span id=\"choice0\"></span></button>";
-		  surveyHTML += "	<button id=\"btn1\"><span id=\"choice1\"></span></button>";
-		  surveyHTML += "	<button id=\"btn2\"><span id=\"choice2\"></span></button>";
-		  surveyHTML += "	<button id=\"btn3\"><span id=\"choice3\"></span></button>";
-		  surveyHTML += "	<button id=\"btn4\"><span id=\"choice4\"></span></button>";
-		  surveyHTML += "</div>";
-		          
-		  surveyHTML += "<button id=\"backBtn\"><span>이전 문항</span></button>";
-		        	
-		  surveyHTML += "<hr style=\"margin-top: 50px\">";
-		  surveyHTML += "<footer>";
-		  surveyHTML += "	<p id=\"progress\">Question x of y.</p>";
-		  surveyHTML += "</footer>";
+		  var surveyHTML = "<form name=\"surveyresult\">";
+		  surveyHTML += "	  <table border=\"1\" width=\"100%\" style=\"margin-right: 10%\">";
+		  
+		  for(var i = 0; i < questions.length; i++){
+			  //alert(questions[i]);
+			  surveyHTML += "<tr><td width=\"70%\"><p>" + questions[i] + "</p></td>";
+			  /*for(var j = 0; j < 5; j++){
+				  surveyHTML += '<input type="radio" class="right_align" name="item', i , '" value=', j , ' style="margin-right:7px;>';
+			  }*/
+			  surveyHTML += "<td width=\"30%\" align=\"center\"><p>";
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="0" style="margin-right:7px;">';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="1" style="margin-right:7px;">';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="2" style="margin-right:7px;">';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="3" style="margin-right:7px;">';
+			  surveyHTML += '<input type="radio" class="right_align" name="item' + i + '" value="4" style="margin-right:7px;">';
 
+			  surveyHTML += "</p></td></tr>";
+		  }
+		  
+		  surveyHTML += "	</table>";
+		  
+		  surveyHTML += '	<input type="button" class="btn btn-primary pull-right" value="결과보기" onclick="calc_result(' + questions.length + ');">';
+		  surveyHTML += "</form>";
+		  
+		  
 		  document.getElementById("survey").innerHTML = surveyHTML;
 		  
-		  populate();
 	  }
 }
 
